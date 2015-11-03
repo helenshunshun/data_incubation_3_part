@@ -152,7 +152,7 @@ callnumber<-length(Created.Date)
 strdate<-as.character(Created.Date)
 spl1<-strsplit(strdate," ") ##get a list of date, time and Am or PM
 
-### make a data frame to caontian call time info
+### make a data frame to contain call time info
 callinfo<-data.frame(x,y,z)
 for(i in 1:callnumber){
   sp<-spl1[[i]]
@@ -165,7 +165,7 @@ day<-callinfo[,1][!duplicated(callinfo[,1])]
 hour<-rep(0,24)
 daydiffer<-function(date){
   for(tt in 1:12){
-    hour[tt]<-nrow(callinfo[callinfo$x==date&callinfo$z=="AM"&callinfo$y==tt,])  ## day is para
+    hour[tt]<-nrow(callinfo[callinfo$x==date&callinfo$z=="AM"&callinfo$y==tt,])  
     hour[tt+12]<-nrow(callinfo[callinfo$x==date&callinfo$z=="PM"&callinfo$y==tt,]) 
   } 
   differ<-max(hour)-min(hour)
@@ -188,7 +188,7 @@ deta<-function(date){
   deta.am<-samday[-1]-samday[-length(samday)] 
   deta.pm<-spmday[-1]-spmday[-length(spmday)] 
   deta.mid<-spmday[1]-samday[length(samday)]
-  deta.day<-c(deta.am,deta.mid,deta.am) ### this is to get deta seconds between donsective calls for a day
+  deta.day<-c(deta.am,deta.mid,deta.am) ### this is to get deta seconds between consective calls for a day
   return(deta.day)
 }
 ss<-sapply(day,deta)
