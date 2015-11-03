@@ -26,7 +26,7 @@ def write_file(filename,newdata):
     
 ### get query data of Location info from Trulia website
 def real_state(library,function,state): 
-    loc_api='fntvhv6tqpgkxjtx3cb297mk' 
+     
     rs_url='http://api.trulia.com/webservices.php?apikey='+loc_api
     final_url=rs_url+"&library="+library+"&function="+function+"&state="+state
     print(final_url)
@@ -50,7 +50,7 @@ for item in allstate:
 state_real('MA')
 
 ### get states info xml file
-loc_api='fntvhv6tqpgkxjtx3cb297mk' 
+
 url_state='http://api.trulia.com/webservices.php?library=LocationInfo&function=getStates&apikey='+loc_api
 states=read_data(url_state)
 state_file = 'states.xml'
